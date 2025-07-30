@@ -33,6 +33,7 @@ import CartIcon from '../../components/Common/CartIcon';
 import { BarsIcon } from '../../components/Common/Icon';
 import MiniBrand from '../../components/Store//MiniBrand';
 import Menu from '../NavigationMenu';
+import ThemeToggle from '../../components/Common/ThemeToggle';
 import Cart from '../Cart';
 
 class Navigation extends React.PureComponent {
@@ -81,11 +82,10 @@ class Navigation extends React.PureComponent {
         <div className='d-flex'>
           <img
             className='item-image'
-            src={`${
-              suggestion.imageUrl
+            src={`${suggestion.imageUrl
                 ? suggestion.imageUrl
                 : '/images/placeholder-image.png'
-            }`}
+              }`}
           />
           <div>
             <Container>
@@ -218,6 +218,7 @@ class Navigation extends React.PureComponent {
                   icon={<BarsIcon />}
                   onClick={() => this.toggleMenu()}
                 />
+                <ThemeToggle className='mx-2' />
                 <CartIcon cartItems={cartItems} onClick={toggleCart} />
               </div>
             </Col>
@@ -226,7 +227,7 @@ class Navigation extends React.PureComponent {
               sm={{ size: 12, order: 2 }}
               md={{ size: 9, order: 1 }}
               lg={{ size: 4, order: 3 }}
-              // className='px-0'
+            // className='px-0'
             >
               <Navbar color='light' light expand='md' className='mt-1 mt-md-0'>
                 <CartIcon
@@ -234,6 +235,7 @@ class Navigation extends React.PureComponent {
                   cartItems={cartItems}
                   onClick={toggleCart}
                 />
+                <ThemeToggle className='d-none d-md-block mx-2' />
                 <Nav navbar>
                   {brands && brands.length > 0 && (
                     <Dropdown

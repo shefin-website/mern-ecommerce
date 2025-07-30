@@ -1,0 +1,1002 @@
+// Theme styles - applies CSS variables to elements
+// This file ensures all themed elements use the CSS variables
+// CRITICAL: This file must override all hardcoded colors with theme variables
+
+// Global theme styles - Override layout.scss hardcoded colors
+body {
+    background-color: var(--theme-bg-primary) !important;
+    color: var(--theme-text-primary) !important;
+    transition: background-color $layout-transition-speed ease, color $layout-transition-speed ease;
+    font-family: $font-family-body;
+    font-size: $font-size-small;
+    font-weight: $font-weight-normal;
+}
+
+// Override any hardcoded background colors
+.application {
+    background-color: var(--theme-bg-primary);
+}
+
+main {
+    background-color: var(--theme-bg-primary);
+}
+
+.wrapper {
+    background-color: var(--theme-bg-primary);
+}
+
+// Header theming
+.header {
+    background-color: var(--theme-bg-header) !important;
+    border-bottom-color: var(--theme-border-primary);
+
+    .header-info {
+        background-color: var(--theme-bg-header-info);
+    }
+
+    .logo {
+        color: var(--theme-text-heading);
+    }
+
+    .navbar {
+        background-color: var(--theme-bg-header) !important;
+    }
+}
+
+// Light mode specific fixes
+.theme-light {
+    .header-info {
+
+        .fa,
+        span {
+            color: $white !important; // Top bar text should be white in light mode
+        }
+    }
+}
+
+// Dark mode specific fixes
+.theme-dark {
+    /* Sell page specific overrides */
+    body .sell .add-merchant,
+    body .sell .add-merchant * {
+        background-color: #000000 !important;
+        color: #ffffff !important;
+    }
+    
+    /* Form controls */
+    body .sell .add-merchant .form-control,
+    body .sell .add-merchant .form-control:focus {
+        background-color: #333333 !important;
+        border-color: #555555 !important;
+        color: #ffffff !important;
+    }
+    
+    /* Labels and text */
+    body .sell .add-merchant label,
+    body .sell .add-merchant .label,
+    body .sell .add-merchant h1,
+    body .sell .add-merchant h2,
+    body .sell .add-merchant h3,
+    body .sell .add-merchant h4,
+    body .sell .add-merchant h5,
+    body .sell .add-merchant h6,
+    body .sell .add-merchant p,
+    body .sell .add-merchant span,
+    body .sell .add-merchant div {
+        color: #ffffff !important;
+    }
+    // Add Merchant form
+    .add-merchant {
+        background-color: #000000 !important;
+        padding: 20px;
+        border-radius: 5px;
+        
+        * {
+            color: #ffffff !important;
+        }
+        
+        .form-control {
+            background-color: #333333 !important;
+            border-color: #444444 !important;
+            color: #ffffff !important;
+        }
+        
+        .form-control:focus {
+            background-color: #444444 !important;
+            border-color: #666666 !important;
+        }
+        
+        .form-control::placeholder {
+            color: #aaaaaa !important;
+        }
+    }
+    .header {
+        .logo {
+            color: $white !important; // MERN Store text should be white in dark mode
+        }
+    }
+
+    // Cart icon in header should be white in dark mode
+    .cart-icon {
+        color: $white !important;
+
+        .fa,
+        svg,
+        .bag-icon,
+        path,
+        circle {
+            color: $white !important;
+            fill: $white !important;
+            stroke: $white !important;
+        }
+
+        .cart-badge {
+            color: $white !important;
+            background-color: $primary-color !important;
+        }
+    }
+
+    // Navigation links should stay white in dark mode (including Shop)
+    .navbar-nav {
+        .nav-link {
+            color: $white !important; // Shop text should be white in dark mode
+
+            &:hover,
+            &:focus {
+                color: $white !important; // Remove hover color change, keep white
+            }
+
+            &.active {
+                color: $white !important; // Active state should also be white in dark mode
+            }
+        }
+
+        .dropdown-toggle {
+            color: $white !important;
+
+            &:hover,
+            &:focus {
+                color: $white !important; // Remove hover color change, keep white
+            }
+        }
+    }
+
+    // Mini cart styling for dark mode
+    .mini-cart {
+        background-color: var(--theme-bg-primary) !important;
+
+        // Target ALL possible close/cancel buttons in the entire mini-cart area
+        .fa,
+        svg,
+        i,
+        button,
+        .btn,
+        [class*="icon"],
+        [class*="close"],
+        [class*="cancel"],
+        .icon-close,
+        .close,
+        .cancel,
+        .fa-times,
+        .fa-close,
+        .fa-remove,
+        .fa-x {
+            color: $white !important;
+            fill: $white !important;
+            stroke: $white !important;
+        }
+
+        // Universal targeting for any element that might be the close button
+        *,
+        *::before,
+        *::after {
+
+            &[class*="close"],
+            &[class*="cancel"],
+            &[class*="times"],
+            &[onclick*="close"],
+            &[onclick*="toggle"] {
+                color: $white !important;
+                fill: $white !important;
+                stroke: $white !important;
+            }
+        }
+
+        // Absolute positioned close buttons (common pattern)
+        button[style*="position: absolute"],
+        [style*="position: absolute"] {
+            color: $white !important;
+
+            .fa,
+            svg,
+            i,
+            &::before,
+            &::after {
+                color: $white !important;
+                fill: $white !important;
+                stroke: $white !important;
+            }
+        }
+
+        // Nuclear option - force ALL elements to be white in mini-cart
+        // This ensures no close button can remain black
+        * {
+            color: $white !important;
+
+            // Target all possible icon and text content
+            &::before,
+            &::after {
+                color: $white !important;
+            }
+        }
+
+        // Override any dark colors that might be applied
+        [style*="color: black"],
+        [style*="color: #000"],
+        [style*="color: #000000"],
+        [style*="color: rgb(0, 0, 0)"] {
+            color: $white !important;
+        }
+
+        .cart {
+            background-color: var(--theme-bg-primary) !important;
+
+            .cart-body {
+                background-color: var(--theme-bg-primary) !important;
+            }
+
+            .cart-header {
+                background-color: var(--theme-bg-primary) !important;
+                border-bottom-color: var(--theme-border-primary) !important;
+
+                // Cancel/close button in cart header - comprehensive targeting
+                .fa,
+                svg,
+                i,
+                button,
+                .btn,
+                [class*="icon"],
+                [class*="close"],
+                [class*="cancel"],
+                .icon-close,
+                .close,
+                .cancel,
+                .fa-times,
+                .fa-close,
+                .fa-remove {
+                    color: $white !important;
+                    fill: $white !important;
+                    stroke: $white !important;
+                }
+
+                // Target all elements and pseudo-elements in cart header
+                *,
+                *::before,
+                *::after {
+                    color: $white !important;
+                }
+
+                // Force any button or clickable element to be white
+                button,
+                [role="button"],
+                [onclick],
+                .clickable {
+                    color: $white !important;
+
+                    &::before,
+                    &::after {
+                        color: $white !important;
+                    }
+                }
+            }
+
+            // Empty cart with big bag icon
+            .empty-cart {
+                background-color: var(--theme-bg-primary) !important;
+
+                .bag-icon {
+                    color: $white !important;
+                    fill: $white !important;
+
+                    path,
+                    circle,
+                    svg {
+                        color: $white !important;
+                        fill: $white !important;
+                        stroke: $white !important;
+                    }
+                }
+
+                p {
+                    color: var(--theme-text-primary) !important;
+                }
+            }
+
+            // Cart items
+            .item-box {
+                background-color: var(--theme-bg-primary) !important;
+                border-bottom-color: var(--theme-border-primary) !important;
+
+                .item-details {
+                    .icon-trash {
+                        color: $white !important; // Trash/delete icon should be white
+                    }
+
+                    .item-label,
+                    .value,
+                    p {
+                        color: var(--theme-text-primary) !important;
+                    }
+                }
+
+                .item-name {
+                    color: var(--theme-text-primary) !important;
+                }
+            }
+        }
+    }
+
+    // Sort dropdown (react-select) styling for dark mode
+    .react-select__control,
+    .select-container .react-select__control {
+        background-color: var(--theme-bg-primary) !important;
+        border-color: var(--theme-border-primary) !important;
+        color: $white !important;
+
+        .react-select__single-value,
+        .react-select__placeholder,
+        .react-select__input-container,
+        .react-select__input input {
+            color: $white !important;
+        }
+
+        .react-select__indicator {
+            color: $white !important;
+        }
+    }
+
+    .react-select__menu,
+    .select-container .react-select__menu {
+        background-color: var(--theme-bg-primary) !important;
+        border-color: var(--theme-border-primary) !important;
+        box-shadow: var(--theme-shadow-secondary) !important;
+    }
+
+    .react-select__option,
+    .select-container .react-select__option {
+        background-color: var(--theme-bg-primary) !important;
+        color: $white !important;
+
+        &:hover,
+        &.react-select__option--is-focused {
+            background-color: var(--theme-bg-secondary) !important;
+            color: $white !important;
+        }
+
+        &.react-select__option--is-selected {
+            background-color: $primary-color !important;
+            color: $white !important;
+        }
+    }
+
+    // Remove ALL hover effects in dark mode for better UX
+    a,
+    button,
+    .btn,
+    .nav-link,
+    .dropdown-toggle,
+    .item-link,
+    .footer-link a {
+
+        &:hover,
+        &:focus {
+            color: inherit !important; // Keep original color, no hover effect
+            background-color: inherit !important; // Keep original background
+            opacity: 1 !important; // Remove opacity changes
+            transform: none !important; // Remove any transforms
+        }
+    }
+}
+
+// Text elements - Override all hardcoded text colors
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+    color: var(--theme-text-heading) !important;
+}
+
+p,
+span,
+div,
+label,
+a {
+    color: var(--theme-text-secondary) !important;
+
+    &:hover {
+        color: var(--theme-text-heading) !important;
+    }
+
+    &:focus {
+        color: var(--theme-text-heading) !important;
+    }
+}
+
+// Navigation links
+.navbar-nav {
+    .nav-link {
+        color: var(--theme-text-primary) !important;
+
+        &:hover,
+        &:focus {
+            color: var(--theme-text-heading) !important;
+        }
+
+        &.active {
+            color: $primary-color !important;
+        }
+    }
+
+    .dropdown-toggle {
+        color: var(--theme-text-primary) !important;
+
+        &:hover,
+        &:focus {
+            color: var(--theme-text-heading) !important;
+        }
+    }
+}
+
+// Dropdown menus
+.dropdown-menu {
+    background-color: var(--theme-bg-primary);
+    border-color: var(--theme-border-primary);
+    box-shadow: var(--theme-shadow-secondary);
+
+    .dropdown-item {
+        color: var(--theme-text-primary);
+
+        &:hover,
+        &:focus {
+            background-color: var(--theme-bg-secondary);
+            color: var(--theme-text-heading);
+        }
+    }
+}
+
+// Cards and containers
+.card {
+    background-color: var(--theme-bg-primary);
+    border-color: var(--theme-border-primary);
+    box-shadow: var(--theme-shadow-primary);
+}
+
+// Forms - Complete form theming
+.form-control,
+input[type='text'],
+input[type='number'],
+input[type='password'],
+input[type='file'],
+input[type='email'],
+textarea,
+select {
+    background-color: var(--theme-bg-primary) !important;
+    border-color: var(--theme-border-primary) !important;
+    color: var(--theme-text-primary) !important;
+
+    &:focus {
+        background-color: var(--theme-bg-primary) !important;
+        border-color: $primary-color !important;
+        color: var(--theme-text-primary) !important;
+        box-shadow: 0 0 0 0.2rem rgba(41, 98, 255, 0.25) !important;
+    }
+
+    &::placeholder {
+        color: var(--theme-text-tertiary) !important;
+    }
+
+    &:disabled {
+        background-color: var(--theme-bg-tertiary) !important;
+        color: var(--theme-text-tertiary) !important;
+    }
+}
+
+// Input boxes and labels
+.input-box,
+.select-box {
+    label {
+        color: var(--theme-text-primary) !important;
+    }
+
+    .invalid-message {
+        color: $validation-color !important;
+    }
+}
+
+// Buttons (theme toggle specific)
+.theme-toggle {
+    color: var(--theme-text-primary);
+    transition: color $layout-transition-speed ease, opacity $layout-transition-speed ease;
+
+    &:hover {
+        color: var(--theme-text-heading);
+        opacity: 0.8;
+    }
+
+    svg {
+        transition: transform $layout-transition-speed ease;
+    }
+
+    &:hover svg {
+        transform: rotate(15deg);
+    }
+}
+
+// Search input
+.react-autosuggest__input {
+    background-color: var(--theme-bg-primary) !important;
+    border-color: var(--theme-border-primary) !important;
+    color: var(--theme-text-primary) !important;
+
+    &::placeholder {
+        color: var(--theme-text-tertiary) !important;
+    }
+}
+
+.react-autosuggest__suggestions-container {
+    .react-autosuggest__suggestions-list {
+        background-color: var(--theme-bg-primary);
+        border-color: var(--theme-border-primary);
+        box-shadow: var(--theme-shadow-secondary);
+    }
+
+    .react-autosuggest__suggestion {
+        background-color: var(--theme-bg-primary);
+        color: var(--theme-text-primary);
+
+        &:hover {
+            background-color: var(--theme-bg-secondary);
+        }
+    }
+}
+
+// Footer - Complete footer theming
+.footer {
+    background-color: var(--theme-bg-secondary) !important;
+    border-top-color: var(--theme-border-primary) !important;
+    color: var(--theme-text-secondary) !important;
+
+    .footer-content,
+    .footer-block,
+    .footer-copyright {
+        background-color: transparent !important;
+        color: var(--theme-text-secondary) !important;
+    }
+
+    .block-title {
+        color: var(--theme-text-heading) !important;
+    }
+
+    .footer-link {
+        a {
+            color: var(--theme-text-secondary) !important;
+
+            &:hover {
+                color: var(--theme-text-heading) !important;
+            }
+        }
+    }
+
+    .footer-block {
+        border-right-color: var(--theme-border-primary) !important;
+        border-bottom-color: var(--theme-border-primary) !important;
+    }
+}
+
+// Icons in header
+.top-header .fa {
+    color: var(--theme-text-secondary);
+}
+
+// Buttons - Complete button theming
+input[type='button'],
+input[type='submit'],
+input[type='reset'],
+button[type='button'],
+button[type='submit'],
+button[type='reset'],
+button {
+    color: var(--theme-text-primary) !important;
+    background-color: transparent;
+    border-color: var(--theme-border-primary);
+
+    &:hover {
+        color: var(--theme-text-heading) !important;
+        background-color: var(--theme-bg-secondary);
+    }
+
+    &:disabled {
+        background-color: var(--theme-bg-tertiary) !important;
+        color: var(--theme-text-tertiary) !important;
+    }
+}
+
+.input-btn {
+    color: var(--theme-text-primary) !important;
+
+    &.custom-btn-primary {
+        background-color: var(--theme-bg-primary) !important;
+        border-color: var(--theme-border-primary) !important;
+
+        .btn-text {
+            color: var(--theme-text-primary) !important;
+        }
+
+        &:hover {
+            background-color: $primary-bg !important;
+
+            .btn-text {
+                color: $white !important;
+            }
+        }
+    }
+
+    &.custom-btn-secondary {
+        background-color: var(--theme-bg-secondary) !important;
+        border-color: var(--theme-border-primary) !important;
+
+        .btn-text {
+            color: var(--theme-text-primary) !important;
+        }
+    }
+}
+
+// Product components - Override hardcoded product styles
+.product-list {
+    .product-container {
+        background-color: var(--theme-bg-primary) !important;
+        box-shadow: var(--theme-shadow-primary) !important;
+
+        .item-box {
+            .item-image-box {
+                background-color: var(--theme-bg-primary) !important;
+            }
+
+            .item-name {
+                color: $primary-color !important;
+            }
+
+            .item-desc {
+                color: var(--theme-text-secondary) !important;
+            }
+
+            .by {
+                color: var(--theme-text-tertiary) !important;
+
+                span {
+                    color: var(--theme-text-tertiary) !important;
+                }
+            }
+        }
+    }
+}
+
+.product-shop,
+.product-page {
+    .main {
+        background-color: var(--theme-bg-primary) !important;
+    }
+
+    .product-container,
+    .review-container {
+        background-color: var(--theme-bg-primary) !important;
+        box-shadow: var(--theme-shadow-primary) !important;
+    }
+
+    .stock {
+        background-color: var(--theme-bg-primary) !important;
+    }
+
+    .item-details {
+        .item-desc {
+            color: var(--theme-text-secondary) !important;
+        }
+
+        .price {
+            color: var(--theme-text-primary) !important;
+        }
+    }
+}
+
+// Shop page theming
+.shop-page {
+    .main {
+        background-color: var(--theme-bg-primary) !important;
+    }
+
+    .shop-toolbar {
+        background-color: var(--theme-bg-primary) !important;
+        box-shadow: var(--theme-shadow-primary) !important;
+    }
+}
+
+// Product dashboard
+.product-dashboard {
+    .p-list {
+        .product-box {
+            background-color: var(--theme-bg-primary) !important;
+            box-shadow: var(--theme-shadow-secondary) !important;
+
+            &:hover {
+                background-color: var(--theme-bg-secondary) !important;
+            }
+        }
+    }
+}
+
+// Login/Register forms
+.signup-form,
+.google-btn,
+.facebook-btn {
+    background-color: var(--theme-bg-primary) !important;
+    border-color: var(--theme-border-primary) !important;
+    color: var(--theme-text-primary) !important;
+
+    .btn-text {
+        color: var(--theme-text-primary) !important;
+    }
+}
+
+// Search autosuggest - Enhanced theming
+.react-autosuggest__container {
+    .react-autosuggest__suggestions-container--open {
+        background-color: var(--theme-bg-primary) !important;
+        border-color: var(--theme-border-primary) !important;
+    }
+
+    .react-autosuggest__suggestion--highlighted {
+        background-color: var(--theme-bg-secondary) !important;
+    }
+
+    .react-autosuggest__suggestion-match {
+        color: var(--theme-text-heading) !important;
+    }
+}
+
+// Misc elements
+.border {
+    border-color: var(--theme-border-primary) !important;
+}
+
+.bg-light {
+    background-color: var(--theme-bg-secondary) !important;
+}
+
+.bg-white {
+    background-color: var(--theme-bg-primary) !important;
+}
+
+.text-muted {
+    color: var(--theme-text-tertiary) !important;
+}
+
+.text-dark {
+    color: var(--theme-text-primary) !important;
+}
+
+.text-white {
+    color: var(--theme-text-inverse) !important;
+}
+
+// Tables and other components
+.table {
+    background-color: var(--theme-bg-primary) !important;
+    color: var(--theme-text-primary) !important;
+
+    th,
+    td {
+        background-color: var(--theme-bg-primary) !important;
+        color: var(--theme-text-primary) !important;
+        border-color: var(--theme-border-primary) !important;
+    }
+
+    thead th {
+        background-color: var(--theme-bg-secondary) !important;
+        color: var(--theme-text-heading) !important;
+    }
+}
+
+// Modals and overlays
+.modal {
+    .modal-content {
+        background-color: var(--theme-bg-primary) !important;
+        color: var(--theme-text-primary) !important;
+        border-color: var(--theme-border-primary) !important;
+    }
+
+    .modal-header {
+        background-color: var(--theme-bg-secondary) !important;
+        border-bottom-color: var(--theme-border-primary) !important;
+
+        .modal-title {
+            color: var(--theme-text-heading) !important;
+        }
+    }
+
+    .modal-footer {
+        background-color: var(--theme-bg-secondary) !important;
+        border-top-color: var(--theme-border-primary) !important;
+    }
+}
+
+// Ensure proper contrast for dark mode
+.theme-dark {
+
+    // Any dark mode specific adjustments
+    .btn-outline-primary {
+        color: $primary-color;
+        border-color: $primary-color;
+
+        &:hover {
+            background-color: $primary-color;
+            color: var(--theme-text-inverse);
+        }
+    }
+
+    // Bootstrap overrides for dark mode
+    .btn-primary {
+        background-color: $primary-color;
+        border-color: $primary-color;
+        color: $white;
+
+        &:hover {
+            background-color: darken($primary-color, 10%);
+            border-color: darken($primary-color, 10%);
+        }
+    }
+
+    // Make sure any remaining hardcoded colors are properly themed
+    .text-success {
+        color: #28a745 !important;
+    }
+
+    .text-danger {
+        color: #dc3545 !important;
+    }
+
+    .text-warning {
+        color: #ffc107 !important;
+    }
+
+    .text-info {
+        color: #17a2b8 !important;
+    }
+}
+
+// Additional comprehensive theming for missed elements
+.container,
+.container-fluid {
+    background-color: transparent;
+}
+
+// Cart and shopping components - General theming
+.mini-cart,
+.cart-summary {
+    background-color: var(--theme-bg-primary) !important;
+    color: var(--theme-text-primary) !important;
+    border-color: var(--theme-border-primary) !important;
+}
+
+.cart-icon {
+    color: var(--theme-text-primary) !important;
+
+    .bag-icon,
+    svg,
+    path {
+        color: var(--theme-text-primary) !important;
+        fill: var(--theme-text-primary) !important;
+        stroke: var(--theme-text-primary) !important;
+    }
+}
+
+// Navigation brand dropdown
+.nav-brand-dropdown {
+    background-color: var(--theme-bg-primary) !important;
+    border-color: var(--theme-border-primary) !important;
+    box-shadow: var(--theme-shadow-secondary) !important;
+}
+
+// Pagination and other UI components
+.pagination {
+    .page-item {
+        .page-link {
+            background-color: var(--theme-bg-primary) !important;
+            color: var(--theme-text-primary) !important;
+            border-color: var(--theme-border-primary) !important;
+
+            &:hover {
+                background-color: var(--theme-bg-secondary) !important;
+                color: var(--theme-text-heading) !important;
+            }
+        }
+
+        &.active .page-link {
+            background-color: $primary-color !important;
+            border-color: $primary-color !important;
+            color: $white !important;
+        }
+    }
+}
+
+// Badges and labels
+.badge {
+    background-color: var(--theme-bg-tertiary) !important;
+    color: var(--theme-text-primary) !important;
+
+    &.badge-primary {
+        background-color: $primary-color !important;
+        color: $white !important;
+    }
+
+    &.badge-secondary {
+        background-color: var(--theme-bg-secondary) !important;
+        color: var(--theme-text-primary) !important;
+    }
+}
+
+// Alerts
+.alert {
+    background-color: var(--theme-bg-secondary) !important;
+    color: var(--theme-text-primary) !important;
+    border-color: var(--theme-border-primary) !important;
+}
+
+// Lists
+.list-group {
+    .list-group-item {
+        background-color: var(--theme-bg-primary) !important;
+        color: var(--theme-text-primary) !important;
+        border-color: var(--theme-border-primary) !important;
+
+        &:hover {
+            background-color: var(--theme-bg-secondary) !important;
+        }
+
+        &.active {
+            background-color: $primary-color !important;
+            border-color: $primary-color !important;
+            color: $white !important;
+        }
+    }
+}
+
+// Tooltips and popovers
+.tooltip {
+    .tooltip-inner {
+        background-color: var(--theme-bg-tertiary) !important;
+        color: var(--theme-text-primary) !important;
+    }
+}
+
+.popover {
+    background-color: var(--theme-bg-primary) !important;
+    border-color: var(--theme-border-primary) !important;
+
+    .popover-header {
+        background-color: var(--theme-bg-secondary) !important;
+        color: var(--theme-text-heading) !important;
+        border-bottom-color: var(--theme-border-primary) !important;
+    }
+
+    .popover-body {
+        color: var(--theme-text-primary) !important;
+    }
+}
