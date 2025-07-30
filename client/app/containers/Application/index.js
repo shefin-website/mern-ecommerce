@@ -11,6 +11,7 @@ import { Switch, Route } from 'react-router-dom';
 import { Container } from 'reactstrap';
 
 import actions from '../../actions';
+import { ThemeProvider } from '../../contexts/Theme';
 
 // routes
 import Login from '../Login';
@@ -74,46 +75,48 @@ class Application extends React.PureComponent {
 
   render() {
     return (
-      <div className='application'>
-        <Notification />
-        <Navigation />
-        <main className='main'>
-          <Container>
-            <div className='wrapper'>
-              <Switch>
-                <Route exact path='/' component={HomePage} />
-                <Route path='/shop' component={Shop} />
-                <Route path='/sell' component={Sell} />
-                <Route path='/contact' component={Contact} />
-                <Route path='/brands' component={BrandsPage} />
-                <Route path='/product/:slug' component={ProductPage} />
-                <Route path='/order/success/:id' component={OrderSuccess} />
-                <Route path='/order/:id' component={OrderPage} />
-                <Route path='/login' component={Login} />
-                <Route path='/register' component={Signup} />
-                <Route
-                  path='/merchant-signup/:token'
-                  component={MerchantSignup}
-                />
-                <Route path='/forgot-password' component={ForgotPassword} />
-                <Route
-                  path='/reset-password/:token'
-                  component={ResetPassword}
-                />
-                <Route path='/auth/success' component={AuthSuccess} />
-                <Route path='/support' component={Authentication(Support)} />
-                <Route
-                  path='/dashboard'
-                  component={Authentication(Dashboard)}
-                />
-                <Route path='/404' component={Page404} />
-                <Route path='*' component={Page404} />
-              </Switch>
-            </div>
-          </Container>
-        </main>
-        <Footer />
-      </div>
+      <ThemeProvider>
+        <div className='application'>
+          <Notification />
+          <Navigation />
+          <main className='main'>
+            <Container>
+              <div className='wrapper'>
+                <Switch>
+                  <Route exact path='/' component={HomePage} />
+                  <Route path='/shop' component={Shop} />
+                  <Route path='/sell' component={Sell} />
+                  <Route path='/contact' component={Contact} />
+                  <Route path='/brands' component={BrandsPage} />
+                  <Route path='/product/:slug' component={ProductPage} />
+                  <Route path='/order/success/:id' component={OrderSuccess} />
+                  <Route path='/order/:id' component={OrderPage} />
+                  <Route path='/login' component={Login} />
+                  <Route path='/register' component={Signup} />
+                  <Route
+                    path='/merchant-signup/:token'
+                    component={MerchantSignup}
+                  />
+                  <Route path='/forgot-password' component={ForgotPassword} />
+                  <Route
+                    path='/reset-password/:token'
+                    component={ResetPassword}
+                  />
+                  <Route path='/auth/success' component={AuthSuccess} />
+                  <Route path='/support' component={Authentication(Support)} />
+                  <Route
+                    path='/dashboard'
+                    component={Authentication(Dashboard)}
+                  />
+                  <Route path='/404' component={Page404} />
+                  <Route path='*' component={Page404} />
+                </Switch>
+              </div>
+            </Container>
+          </main>
+          <Footer />
+        </div>
+      </ThemeProvider>
     );
   }
 }

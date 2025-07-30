@@ -129,3 +129,76 @@ $bars: url('/images/bars.png');
 $chevron-down: url('/images/chevron-down.svg');
 $close: url('/images/close.svg');
 $bag: url('/images/bag.svg');
+
+// Theme CSS Variables - will be overridden by theme classes
+:root {
+    // Light theme variables (default)
+    --theme-bg-primary: #{$white};
+    --theme-bg-secondary: #{$theme-gray};
+    --theme-bg-tertiary: #{$theme-bright-gray};
+    --theme-bg-header: #{$white};
+    --theme-bg-header-info: #{$theme-light-black};
+    --theme-text-primary: #{$font-custom-color};
+    --theme-text-secondary: #{$font-color};
+    --theme-text-tertiary: #{$font-subtext-color};
+    --theme-text-heading: #{$font-heading-color};
+    --theme-text-inverse: #{$white};
+    --theme-border-primary: #{$border-color-default};
+    --theme-border-secondary: #{$border-color-primary};
+    --theme-shadow-primary: #{$box-shadow};
+    --theme-shadow-secondary: #{$box-shadow-primary};
+
+    // Additional variables for comprehensive theming
+    --theme-bg-hover: #{$hover-bg};
+    --theme-bg-active: #{$theme-bright-gray};
+    --theme-text-link: #{$primary-color};
+    --theme-text-link-hover: #{$theme-blue};
+}
+
+// Dark theme variables
+.theme-dark {
+    --theme-bg-primary: #121212;
+    --theme-bg-secondary: #1e1e1e;
+    --theme-bg-tertiary: #2a2a2a;
+    --theme-bg-header: #1e1e1e;
+    --theme-bg-header-info: #000000;
+    --theme-text-primary: #ffffff;
+    --theme-text-secondary: #e0e0e0;
+    --theme-text-tertiary: #b0b0b0;
+    --theme-text-heading: #ffffff;
+    --theme-text-inverse: #000000;
+    --theme-border-primary: #404040;
+    --theme-border-secondary: #333333;
+    --theme-shadow-primary: 0 0 10px 0 rgba(255, 255, 255, 0.1);
+    --theme-shadow-secondary: 0 1px 2px rgba(255, 255, 255, 0.1);
+
+    // Additional dark theme variables for better contrast
+    --theme-bg-hover: #2a2a2a;
+    --theme-bg-active: #333333;
+    --theme-text-link: #64b5f6;
+    --theme-text-link-hover: #90caf9;
+}
+
+// Light theme explicit class (same as root)
+.theme-light {
+    --theme-bg-primary: #{$white};
+    --theme-bg-secondary: #{$theme-gray};
+    --theme-bg-tertiary: #{$theme-bright-gray};
+    --theme-bg-header: #{$white};
+    --theme-bg-header-info: #{$theme-light-black};
+    --theme-text-primary: #{$font-custom-color};
+    --theme-text-secondary: #{$font-color};
+    --theme-text-tertiary: #{$font-subtext-color};
+    --theme-text-heading: #{$font-heading-color};
+    --theme-text-inverse: #{$white};
+    --theme-border-primary: #{$border-color-default};
+    --theme-border-secondary: #{$border-color-primary};
+    --theme-shadow-primary: #{$box-shadow};
+    --theme-shadow-secondary: #{$box-shadow-primary};
+
+    // Additional light theme variables
+    --theme-bg-hover: #{$hover-bg};
+    --theme-bg-active: #{$theme-bright-gray};
+    --theme-text-link: #{$primary-color};
+    --theme-text-link-hover: #{$theme-blue};
+}

@@ -1,10 +1,20 @@
 .sell {
   .agreement-banner-text {
-    background-color: $theme-white;
+    background-color: var(--theme-bg-secondary, $theme-white);
+    color: var(--theme-text-primary, $theme-black);
     padding: 30px 16px 30px;
     border-radius: $border-radius-primary;
+    
+    .theme-dark & {
+      background-color: #000000 !important;
+      color: #ffffff !important;
+      
+      h3, h5, p, span, div, b {
+        color: #ffffff !important;
+      }
+    }
   }
-
+  
   .agreement-banner {
     margin: 0 auto;
     width: 250px;
