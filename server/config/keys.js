@@ -21,6 +21,13 @@ module.exports = {
     domain: process.env.MAILGUN_DOMAIN,
     sender: process.env.MAILGUN_EMAIL_SENDER
   },
+  mailtrap: {
+    token: process.env.MAILTRAP_TOKEN,
+    sender: {
+      email: process.env.MAILTRAP_EMAIL_SENDER,
+      name: "MERN Store!"
+    }
+  },
   google: {
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
@@ -36,5 +43,10 @@ module.exports = {
     secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
     region: process.env.AWS_REGION,
     bucketName: process.env.AWS_BUCKET_NAME
+  },
+  cloudinary: {
+    cloudName: process.env.CLOUDINARY_CLOUD_NAME,
+    apiKey: process.env.CLOUDINARY_API_KEY,
+    apiSecret: process.env.CLOUDINARY_API_SECRET
   }
 };
